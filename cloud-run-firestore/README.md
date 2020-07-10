@@ -28,3 +28,9 @@ Run using docker (put service account JSON `serviceAccount.json` in same directo
 docker build -t cloud-run-firestore .
 docker run -e GOOGLE_APPLICATION_CREDENTIALS=serviceAccount.json -e PORT=8080 -p 8080:8080 cloud-run-firestore
 ```
+
+Deploying on Cloud Run (from Cloud Shell):
+```
+gcloud builds submit --tag gcr.io/$DEVSHELL_PROJECT_ID/cloud-run-firestore
+gcloud run deploy --image gcr.io/$DEVSHELL_PROJECT_ID/cloud-run-firestore --platform managed
+```
