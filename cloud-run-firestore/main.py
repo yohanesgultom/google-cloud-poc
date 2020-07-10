@@ -26,7 +26,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello_world():
     target = os.environ.get('TARGET', 'World')
-    return jsonify({'message': 'Hello {}!\n'.format(target)})
+    return jsonify({'message': 'Hello {}!'.format(target)})
 
 @app.route('/logs', methods=['GET', 'POST'])
 def log():
