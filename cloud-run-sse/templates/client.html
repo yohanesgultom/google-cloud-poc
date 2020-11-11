@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Run SSE Demo</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <style>
+        body {font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;}
+    </style>
+</head>
+<body>
+    <h1>Cloud Run SSE Demo</h1>
+    <div>
+        <button onclick="start()">Start</button>
+        <button onclick="clearResult()">Clear</button>
+    </div>
+    <h3>Message:</h3>
+    <div id="result"></div>
+<script>
+// start long process
+const start = async () => {    
+    fetch("/start");
+}
+
+// clear result
+const clearResult = () => {
+    document.getElementById("result").innerHTML = "";
+}
+
+// Start listening
+const source = new EventSource("/listen");
+source.onmessage = function(event) {
+    document.getElementById("result").innerHTML += event.data + "<br>";
+};
+</script>
+</body>
+</html>
