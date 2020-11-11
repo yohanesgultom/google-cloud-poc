@@ -2,7 +2,7 @@
 
 Simple SSE PoC with Google Cloud Run.
 
-> Basically it will deploy a flask server with a single page html page (in root path). So when you access the cloud run URL, you will see a page with Start and Clear button. When opened, this page is automatically listening to "/listen" endpoints. When you click Start button, it will call "/start" endpoint that will trigger thread that push message to all listener. So you should see messages printed in the page. The Clear button is just to clear the printed messages.
+> Basically it will deploy a flask server with a single html page (in root path). When you access the cloud run URL, you will see a page with Start and Clear button. When opened, this page will automatically listen to "/listen" endpoint. When you click Start button, it will call "/start" endpoint that will trigger a thread that push message to all listeners. So you will see messages printed in the page. The Clear button is just to clear the printed messages.
 
 ## Setup
 
