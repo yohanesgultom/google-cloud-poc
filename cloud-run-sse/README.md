@@ -18,3 +18,5 @@ Pay attention on the messages in the console as sometimes the build/deploy proce
 Service [cloud-run-sse] revision [cloud-run-sse-00001-bov] has been deployed and is serving 100 percent of traffic.                        
 Service URL: https://cloud-run-sse-6v5ifmf2ma-uc.a.run.app
 ```
+
+Open the `Service URL` in browser that support `EventSource` (SSE client) to see it in action
