@@ -1,0 +1,135 @@
+swagger: '2.0'
+info:
+  title: POC API
+  description: POC API 
+  version: 1.0.0
+schemes:
+  - https
+produces:
+  - application/json
+
+paths:
+
+  "/alpha":
+    get:
+      summary: ping
+      operationId: alpha-ping
+      x-google-backend:
+        address: https://alpha-dot-{PROJECT_ID}.appspot.com/
+      responses:
+        200:
+          description: A successful response
+          schema:
+            type: string
+
+  "/alpha/trailing-slash":
+    get:
+      summary: trailing-slash
+      operationId: alpha-trailing-slash
+      x-google-backend:
+        address: https://alpha-dot-{PROJECT_ID}.appspot.com/trailing-slash/
+      responses:
+        200:
+          description: A successful response
+          schema:
+            type: string
+
+  "/alpha/action":
+    post:
+      tags:
+      - alpha
+      description: "Action"
+      operationId: "alpha-action"
+      x-google-backend:
+        address: https://alpha-dot-{PROJECT_ID}.appspot.com/action/
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: action
+          description: action params
+          schema:
+            type: "object"
+            properties:
+              url:
+                type: "string"
+                default: "https://beta-dot-{PROJECT_ID}.appspot.com"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Success"
+
+  "/beta":
+    get:
+      summary: ping
+      operationId: beta-ping
+      x-google-backend:
+        address: https://beta-dot-{PROJECT_ID}.appspot.com/
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+
+  "/beta/action":
+    post:
+      tags:
+      - beta
+      description: "Action"
+      operationId: "beta-action"
+      x-google-backend:
+        address: https://beta-dot-{PROJECT_ID}.appspot.com/action/
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: action
+          description: action params
+          schema:
+            type: "object"
+            properties:
+              url:
+                type: "string"
+                default: "https://alpha-dot-{PROJECT_ID}.appspot.com"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Success"
+
+  "/gamma":
+    get:
+      summary: ping
+      operationId: gamma-ping
+      x-google-backend:
+        address: https://gamma-dot-{PROJECT_ID}.appspot.com/
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+
+  "/gamma/publish":
+    post:
+      summary: publish message
+      operationId: gamma-publish
+      x-google-backend:
+        address: https://gamma-dot-{PROJECT_ID}.appspot.com/publish
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+
+  "/gamma/messages":
+    get:
+      summary: list messages
+      operationId: gamma-messages
+      x-google-backend:
+        address: https://gamma-dot-{PROJECT_ID}.appspot.com/messages
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
